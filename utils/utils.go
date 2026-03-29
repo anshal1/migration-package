@@ -75,7 +75,7 @@ func applyMigration(version string, sql string, db *sql.DB) error {
 	}
 	_, err = db.Exec(sql)
 	if err != nil {
-		_, err := db.Exec("delete from migration where version ($1)", version)
+		_, err := db.Exec("delete from migration where version = ($1)", version)
 		if err != nil {
 			fmt.Println(2)
 			return err
